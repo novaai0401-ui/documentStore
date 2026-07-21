@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  push:
+    branches: [main, v2/cleanup]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [20, 22]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Order matters — test suites import the built dist/.
+      - name: Build all packages
+        run: pnpm -r build
+
+      - name: Run unit tests (vitest)
+        run: pnpm -r test
+
+      - name: Run legacy round-trip smoke
+        run: node packages/pdf-core-parser/__tests__/smoke.mjs
+
+      - name: Build demo app
+        run: pnpm --filter demo-react build
+
+  # Drives the built app in headless Chromium exactly as a user would and
+  # asserts core behaviour across every editor (scripts/e2e-smoke.mjs). Puppeteer
+  # isn't a committed dependency (it downloads Chromium); GitHub-hosted runners
+  # have the network access to fetch it, so we add it just for this job.
+  e2e-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build all packages
+        run: pnpm -r build
+
+      - name: Build demo app
+        run: pnpm --filter demo-react build
+
+      - name: Install Puppeteer (downloads Chromium)
+        run: pnpm add -Dw puppeteer
+
+      - name: Run E2E smoke suite
+        run: pnpm e2e:smoke

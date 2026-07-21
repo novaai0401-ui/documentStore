@@ -1,0 +1,21 @@
+# Pyntra — free, private, in-browser PDF editor
+User-agent: *
+Allow: /
+
+# AI / LLM crawlers explicitly welcomed
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://pyntra.tekivex.com/sitemap.xml

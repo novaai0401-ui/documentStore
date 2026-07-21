@@ -1,0 +1,76 @@
+.docs {
+  font-family: Inter, system-ui, sans-serif;
+  color: #0f172a;
+  background: #fff;
+  line-height: 1.65;
+}
+.docs a { color: #2e5bff; text-decoration: none; }
+.docs a:hover { text-decoration: underline; }
+
+.docs-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  z-index: 10;
+}
+.docs-brand { font-weight: 800; font-size: 20px; color: #0f172a !important; letter-spacing: -0.02em; }
+.docs-topnav { display: flex; gap: 20px; font-weight: 600; font-size: 14px; }
+
+.docs-body { display: flex; max-width: 1100px; margin: 0 auto; gap: 32px; padding: 24px; }
+
+.docs-toc {
+  flex: 0 0 200px;
+  position: sticky;
+  top: 80px;
+  align-self: flex-start;
+  height: max-content;
+  font-size: 14px;
+}
+.docs-toc strong { display: block; margin-bottom: 10px; color: #334155; }
+.docs-toc ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.docs-toc a { color: #475569; }
+
+.docs-main { flex: 1; min-width: 0; max-width: 760px; }
+.docs-main section { margin-bottom: 40px; scroll-margin-top: 80px; }
+.docs-main h1 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.02em; margin: 10px 0 14px; }
+.docs-main h2 { font-size: 24px; margin: 28px 0 12px; padding-top: 8px; border-top: 1px solid #f1f5f9; }
+.docs-main h3 { font-size: 17px; margin: 18px 0 6px; }
+.docs-lead { font-size: 18px; color: #334155; }
+.docs-main p { color: #334155; }
+.docs-main ul { color: #334155; padding-left: 22px; }
+.docs-main li { margin: 6px 0; }
+.docs-main code { background: #f1f5f9; padding: 1px 6px; border-radius: 5px; font-size: 0.9em; }
+
+.docs-code {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 10px;
+  padding: 16px 18px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 12px 0;
+}
+.docs-code code { background: none; color: inherit; padding: 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+.docs-footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 13px;
+  color: #64748b;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 760px) {
+  .docs-toc { display: none; }
+}

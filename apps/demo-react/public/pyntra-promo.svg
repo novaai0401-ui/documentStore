@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" font-family="Inter, system-ui, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1220"/><stop offset="1" stop-color="#1e293b"/></linearGradient>
+    <linearGradient id="ac" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#2e5bff"/></linearGradient>
+    <style>.scene{opacity:0}.blob{transform-origin:center;animation:float 9s ease-in-out infinite}@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(26px,-20px)}}@keyframes s0{0%{opacity:1}11.124%{opacity:1}13.483%{opacity:0}100%{opacity:0}}.s0{animation:s0 17.799999999999997s linear infinite}@keyframes s1{0%{opacity:0}13.483%{opacity:0}15.843%{opacity:1}22.921%{opacity:1}25.281%{opacity:0}100%{opacity:0}}.s1{animation:s1 17.799999999999997s linear infinite}@keyframes s2{0%{opacity:0}25.281%{opacity:0}27.64%{opacity:1}34.719%{opacity:1}37.079%{opacity:0}100%{opacity:0}}.s2{animation:s2 17.799999999999997s linear infinite}@keyframes s3{0%{opacity:0}37.079%{opacity:0}39.438%{opacity:1}46.517%{opacity:1}48.876%{opacity:0}100%{opacity:0}}.s3{animation:s3 17.799999999999997s linear infinite}@keyframes s4{0%{opacity:0}48.876%{opacity:0}51.236%{opacity:1}58.315%{opacity:1}60.674%{opacity:0}100%{opacity:0}}.s4{animation:s4 17.799999999999997s linear infinite}@keyframes s5{0%{opacity:0}60.674%{opacity:0}63.034%{opacity:1}70.112%{opacity:1}72.472%{opacity:0}100%{opacity:0}}.s5{animation:s5 17.799999999999997s linear infinite}@keyframes s6{0%{opacity:0}72.472%{opacity:0}74.831%{opacity:1}81.91%{opacity:1}84.27%{opacity:0}100%{opacity:0}}.s6{animation:s6 17.799999999999997s linear infinite}@keyframes s7{0%{opacity:0}84.27%{opacity:0}86.629%{opacity:1}97.64%{opacity:1}100%{opacity:0}100%{opacity:0}}.s7{animation:s7 17.799999999999997s linear infinite}</style>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <circle class="blob" cx="1080" cy="140" r="340" fill="#2e5bff" opacity="0.13"/>
+  <circle class="blob" cx="200" cy="620" r="260" fill="#38bdf8" opacity="0.09"/>
+  <g opacity="0.96"><rect x="56" y="52" width="40" height="48" rx="8" fill="url(#ac)"/><text x="76" y="86" font-size="28" font-weight="800" fill="#fff" text-anchor="middle">P</text><text x="108" y="87" font-size="30" font-weight="800" fill="#f8fafc">Pyntra</text></g>
+  <g class="scene s0">
+      <g transform="translate(640,212) scale(1.15)">
+    <rect x="-34" y="-44" width="68" height="84" rx="12" fill="url(#ac)"/>
+    <text x="0" y="14" font-size="52" font-weight="800" fill="#fff" text-anchor="middle">P</text></g>
+      <text x="640" y="372" font-size="86" font-weight="800" fill="#f8fafc" text-anchor="middle">Pyntra</text>
+      <text x="640" y="428" font-size="32" font-weight="600" fill="#38bdf8" text-anchor="middle">Your private document &amp; design studio</text>
+      <text x="640" y="490" font-size="30" font-weight="700" fill="#94a3b8" text-anchor="middle">100% in your browser · nothing uploaded</text>
+    </g><g class="scene s1">
+      <g transform="translate(640,300) scale(1)">
+    <rect x="-50" y="-66" width="100" height="132" rx="12" fill="#fff"/>
+    <rect x="-50" y="-66" width="100" height="34" rx="12" fill="url(#ac)"/>
+    <rect x="-34" y="-14" width="68" height="9" rx="4.5" fill="#94a3b8"/>
+    <rect x="-34" y="6" width="68" height="9" rx="4.5" fill="#cbd5e1"/>
+    <rect x="-34" y="26" width="44" height="9" rx="4.5" fill="#cbd5e1"/></g>
+      <text x="640" y="470" font-size="64" font-weight="800" fill="#f8fafc" text-anchor="middle">Edit any PDF like Word</text>
+      <text x="640" y="522" font-size="30" font-weight="600" fill="#cbd5e1" text-anchor="middle">Click any line and retype — even flat, “non-editable” PDFs</text>
+      
+    </g><g class="scene s2">
+      <g transform="translate(640,300) scale(1)">
+    <rect x="-66" y="-40" width="54" height="80" rx="9" fill="#2e5bff"/>
+    <rect x="-22" y="-52" width="54" height="92" rx="9" fill="#22a06b"/>
+    <rect x="20" y="-40" width="50" height="80" rx="9" fill="#e8833a"/>
+    <text x="-39" y="14" font-size="30" font-weight="800" fill="#fff" text-anchor="middle">W</text>
+    <text x="5" y="6" font-size="30" font-weight="800" fill="#fff" text-anchor="middle">X</text>
+    <text x="45" y="14" font-size="26" font-weight="800" fill="#fff" text-anchor="middle">P</text></g>
+      <text x="640" y="470" font-size="64" font-weight="800" fill="#f8fafc" text-anchor="middle">Open Office files natively</text>
+      <text x="640" y="522" font-size="30" font-weight="600" fill="#cbd5e1" text-anchor="middle">Word · Excel · PowerPoint · Markdown · Images — edit in place</text>
+      
+    </g><g class="scene s3">
+      <g transform="translate(640,300) scale(1)">
+    <circle cx="-26" cy="-6" r="40" fill="#2e5bff" opacity="0.92"/>
+    <rect x="-6" y="-34" width="64" height="64" rx="10" fill="#38bdf8" opacity="0.92"/>
+    <path d="M2 44 L40 -20 L78 44 Z" transform="translate(-40,4)" fill="#f59e0b" opacity="0.92"/></g>
+      <text x="640" y="470" font-size="64" font-weight="800" fill="#f8fafc" text-anchor="middle">Design studio</text>
+      <text x="640" y="522" font-size="30" font-weight="600" fill="#cbd5e1" text-anchor="middle">Social posts · posters · résumés &amp; cover letters · brand kits</text>
+      
+    </g><g class="scene s4">
+      <g transform="translate(640,300) scale(1)">
+    <rect x="-64" y="-48" width="128" height="96" rx="12" fill="#fff"/>
+    <circle cx="30" cy="-18" r="13" fill="#f59e0b"/>
+    <path d="M-58 44 L-18 -2 L14 28 L34 8 L58 44 Z" fill="#2e5bff"/></g>
+      <text x="640" y="470" font-size="64" font-weight="800" fill="#f8fafc" text-anchor="middle">Image editor</text>
+      <text x="640" y="522" font-size="30" font-weight="600" fill="#cbd5e1" text-anchor="middle">Crop, filters, resize &amp; one-click background remover</text>
+      
+    </g><g class="scene s5">
+      <g transform="translate(640,300) scale(1)">
+    <path d="M0 -66 L54 -42 V6 C54 42 30 60 0 70 C-30 60 -54 42 -54 6 V-42 Z" fill="url(#ac)"/>
+    <path d="M-22 2 L-6 20 L26 -20" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></g>
+      <text x="640" y="470" font-size="64" font-weight="800" fill="#f8fafc" text-anchor="middle">OCR · QR · true redaction</text>
+      <text x="640" y="522" font-size="30" font-weight="600" fill="#cbd5e1" text-anchor="middle">Scan to text, generate QR codes, verifiably remove sensitive text</text>
+      
+    </g><g class="scene s6">
+      <g transform="translate(640,300) scale(1)">
+    <circle cx="-38" cy="-2" r="30" fill="#2e5bff"/>
+    <circle cx="38" cy="-2" r="30" fill="#38bdf8"/>
+    <circle cx="0" cy="10" r="34" fill="#22c55e" stroke="#0b1220" stroke-width="6"/></g>
+      <text x="640" y="470" font-size="64" font-weight="800" fill="#f8fafc" text-anchor="middle">Real-time collaboration</text>
+      <text x="640" y="522" font-size="30" font-weight="600" fill="#cbd5e1" text-anchor="middle">Co-edit across devices — end-to-end encrypted</text>
+      
+    </g><g class="scene s7">
+      <g transform="translate(640,212) scale(1.15)">
+    <rect x="-44" y="-44" width="88" height="88" rx="18" fill="url(#ac)"/>
+    <path d="M-16 14 L-2 14 L6 -18 L-24 -2 Z M2 14 L16 14 L16 -2 Z" fill="#fff"/>
+    <text x="0" y="2" font-size="44" font-weight="800" fill="#fff" text-anchor="middle">↓</text></g>
+      <text x="640" y="372" font-size="86" font-weight="800" fill="#f8fafc" text-anchor="middle">Free · Private · Installable</text>
+      <text x="640" y="428" font-size="32" font-weight="600" fill="#38bdf8" text-anchor="middle">No account · no upload · no watermark</text>
+      <text x="640" y="490" font-size="30" font-weight="700" fill="#94a3b8" text-anchor="middle">pyntra.tekivex.com</text>
+    </g>
+</svg>

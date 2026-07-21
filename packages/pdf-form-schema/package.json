@@ -1,0 +1,38 @@
+{
+  "name": "@pdfcraft/form-schema",
+  "version": "1.0.0-rc.0",
+  "description": "Bridge AcroForm fields to a JSON schema. Drives the dynamic-form view in @pdfcraft/ui-react.",
+  "keywords": ["pdf", "acroform", "form-schema", "json-schema"],
+  "homepage": "https://github.com/novaai0401-ui/editable-pdf#readme",
+  "bugs": "https://github.com/novaai0401-ui/editable-pdf/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/novaai0401-ui/editable-pdf.git",
+    "directory": "packages/pdf-form-schema"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "sideEffects": false,
+  "files": ["dist/index.js", "dist/index.d.ts", "LICENSE", "README.md"],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist",
+    "test": "echo 'no tests'",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "@pdfcraft/engine": "workspace:*"
+  },
+  "devDependencies": {
+    "tsup": "^8.4.0",
+    "typescript": "^5.7.0"
+  }
+}

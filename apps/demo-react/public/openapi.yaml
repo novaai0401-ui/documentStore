@@ -1,0 +1,34 @@
+openapi: 3.0.1
+info:
+  title: Pyntra
+  description: >
+    Local-first PDF/document operations. Pyntra runs in the browser and via the
+    @pdfcraft/mcp Model Context Protocol server; this spec documents the
+    capabilities agents can invoke. All processing is client-side / on the
+    user's machine — documents are never uploaded.
+  version: "0.1.0"
+servers:
+  - url: https://pyntra.tekivex.com
+paths:
+  /capabilities:
+    get:
+      operationId: listCapabilities
+      summary: List the document operations Pyntra can perform locally.
+      responses:
+        "200":
+          description: Capability list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tools:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                      - pdf_extract_text
+                      - pdf_list_form_fields
+                      - pdf_fill_form
+                      - pdf_tag_accessibility
+                      - pdf_redact

@@ -1,0 +1,19 @@
+{
+  "name": "@pdfcraft/sdk",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "pdfcraft embeddable SDK — license-key infrastructure (free in development, licensed in production).",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "generate-license": "node scripts/generate-license.mjs"
+  },
+  "devDependencies": {
+    "tsup": "^8.4.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}

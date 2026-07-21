@@ -1,0 +1,203 @@
+/*
+ * Enterprise polish layer — additive refinements applied on top of the existing
+ * styles: a softer app canvas, elevated chrome, consistent card/modal shadows,
+ * accessible keyboard focus rings, refined scrollbars, and section labelling for
+ * the home screen. Kept purely cosmetic so it can't break layout.
+ */
+:root {
+  --ent-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.06);
+  --ent-shadow-md: 0 6px 18px rgba(15, 23, 42, 0.10);
+  --ent-shadow-lg: 0 24px 64px rgba(15, 23, 42, 0.28);
+  --ent-ring: 0 0 0 3px rgba(46, 91, 255, 0.28);
+}
+
+/* Accessible focus rings for keyboard users (enterprise a11y baseline). */
+.ws :where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: none;
+  box-shadow: var(--ent-ring);
+  border-radius: 6px;
+}
+
+/* App shell: a calmer canvas, crisp type rendering, and no accidental
+   horizontal scroll on any screen/device. The main area scrolls vertically so
+   long library/template lists are reachable on small phones. */
+.ws {
+  background: #f6f8fb;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+.ws-main { overflow-x: hidden; overflow-y: auto; }
+.ws-bar { box-shadow: var(--ent-shadow-sm); position: relative; z-index: 30; }
+.ws-brand { display: inline-flex; align-items: center; gap: 9px; }
+.ws-logo {
+  width: 26px; height: 26px; border-radius: 7px; flex: 0 0 auto;
+  background: linear-gradient(135deg, #2e5bff, #38bdf8);
+  color: #fff; font-weight: 800; font-size: 15px; display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 6px rgba(46, 91, 255, 0.35);
+}
+
+/* Cards: gentle elevation + smooth, premium hover. */
+.ws-template-card { box-shadow: var(--ent-shadow-sm); transition: box-shadow .16s ease, transform .16s ease, border-color .16s ease; }
+.ws-template-card:hover { box-shadow: var(--ent-shadow-md); }
+
+/* Modals + editor bars read as crisp, layered surfaces. */
+.v2-modal__inner { box-shadow: var(--ent-shadow-lg); }
+.ed-bar, .imgstudio-bar { box-shadow: var(--ent-shadow-sm); position: relative; z-index: 10; }
+
+/* Thin, modern scrollbars on the dense panels. */
+.studio-props, .imgstudio-panel, .resume-body, .brand-edit, .ai-body, .v2-modal__inner { scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent; }
+.studio-props::-webkit-scrollbar, .imgstudio-panel::-webkit-scrollbar, .resume-body::-webkit-scrollbar, .brand-edit::-webkit-scrollbar, .ai-body::-webkit-scrollbar, .v2-modal__inner::-webkit-scrollbar { width: 10px; height: 10px; }
+.studio-props::-webkit-scrollbar-thumb, .imgstudio-panel::-webkit-scrollbar-thumb, .resume-body::-webkit-scrollbar-thumb, .brand-edit::-webkit-scrollbar-thumb, .ai-body::-webkit-scrollbar-thumb, .v2-modal__inner::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; border: 2px solid transparent; background-clip: padding-box; }
+
+/* Home screen section labels. */
+.ws-section-label { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #94a3b8; margin: 30px 0 14px; }
+.ws-section-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, #e2e8f0, transparent); }
+
+/* Modal headers get a faint accent underline for hierarchy. */
+.brand-head { box-shadow: inset 0 -1px 0 #eef2f7; }
+
+/* Skip-to-content link — visible only when focused (keyboard users). */
+.skip-link {
+  position: absolute; left: 12px; top: -48px; z-index: 100;
+  background: #2e5bff; color: #fff; padding: 9px 16px; border-radius: 8px;
+  font-weight: 700; font-size: 13px; text-decoration: none;
+  transition: top .15s ease; box-shadow: var(--ent-shadow-md);
+}
+.skip-link:focus { top: 12px; outline: none; box-shadow: var(--ent-ring); }
+
+/* Header utility buttons (theme toggle, command-palette hint). */
+.ws-icon-btn {
+  display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px;
+  border: 1px solid #e2e8f0; background: #fff; color: #334155; border-radius: 8px;
+  cursor: pointer; font-size: 14px; line-height: 1; font-weight: 600;
+  transition: border-color .14s ease, background .14s ease, color .14s ease;
+}
+.ws-icon-btn:hover { border-color: #2e5bff; color: #2e5bff; background: #f5f8ff; }
+.ws-kbd-hint { font-size: 11px; color: #94a3b8; border: 1px solid #e2e8f0; border-radius: 5px; padding: 1px 5px; font-family: inherit; }
+/* Descriptive labels for the icon-only controls — hidden on the desktop bar
+   (icons + tooltips there), shown only in the mobile menu (see workspace.css). */
+.ws-ctrl-label { display: none; }
+.ws-bar-end { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.ws-bar-end .ws-docs { margin-left: 0; }
+
+/* These icon affordances render via TkxButton for consistency; keep their
+   compact footprint (TkxButton's inline ghost styles aren't !important, so
+   class rules win). */
+.ws-icon-btn { height: 32px; padding: 0 10px !important; min-width: 0; gap: 6px; }
+.ws-template-dup, .ws-template-del { padding: 0 !important; min-width: 0 !important; width: 24px; height: 24px; }
+.ws-template-del { background: #f1f5f9 !important; color: #94a3b8 !important; }
+.ws-template-del:hover { background: #fee2e2 !important; color: #b91c1c !important; }
+.ws-template-dup { background: #f1f5f9 !important; color: #94a3b8 !important; }
+.ws-template-dup:hover { background: #eff6ff !important; color: #2e5bff !important; }
+
+/* ── Command palette (⌘K) ───────────────────────────────────────────────── */
+.cmdk {
+  position: fixed; inset: 0; z-index: 1000; display: flex; justify-content: center;
+  align-items: flex-start; padding: 12vh 16px 16px; background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(2px); animation: cmdk-fade .12s ease;
+}
+@keyframes cmdk-fade { from { opacity: 0 } to { opacity: 1 } }
+.cmdk-panel {
+  width: 100%; max-width: 560px; background: #fff; border-radius: 14px; overflow: hidden;
+  box-shadow: var(--ent-shadow-lg); border: 1px solid #e2e8f0; display: flex; flex-direction: column;
+  max-height: 70vh; animation: cmdk-rise .14s ease;
+}
+@keyframes cmdk-rise { from { transform: translateY(-8px); opacity: .6 } to { transform: none; opacity: 1 } }
+.cmdk-search { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid #eef2f7; }
+.cmdk-search-icon { color: #94a3b8; font-size: 18px; }
+.cmdk-input { flex: 1; border: none; outline: none; font-size: 16px; color: #0f172a; background: none; }
+.cmdk-input::placeholder { color: #94a3b8; }
+.cmdk-esc { font-size: 11px; color: #94a3b8; border: 1px solid #e2e8f0; border-radius: 5px; padding: 2px 6px; }
+.cmdk-list { overflow-y: auto; padding: 8px; scrollbar-width: thin; }
+.cmdk-empty { padding: 28px 16px; text-align: center; color: #94a3b8; font-size: 14px; }
+.cmdk-opt {
+  display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
+  border: none; background: none; padding: 10px 12px; border-radius: 9px; cursor: pointer;
+  color: #0f172a; font-size: 14px;
+}
+.cmdk-opt.is-active { background: #eff4ff; }
+.cmdk-opt-group { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #94a3b8; flex: 0 0 auto; }
+.cmdk-opt-title { font-weight: 600; flex: 1; }
+.cmdk-opt-hint { font-size: 12px; color: #94a3b8; flex: 0 0 auto; }
+.cmdk-foot {
+  display: flex; align-items: center; justify-content: space-between; padding: 9px 14px;
+  border-top: 1px solid #eef2f7; font-size: 12px; color: #94a3b8; background: #fbfcfe;
+}
+.cmdk-foot-keys kbd { font-family: inherit; border: 1px solid #e2e8f0; border-radius: 4px; padding: 0 4px; margin: 0 1px; font-size: 11px; }
+
+/* ── Enterprise interaction polish — applies across every editor screen ───── */
+
+/* Editor chrome reads as crisp, layered surfaces with a faint top sheen. */
+.ed-bar { background: linear-gradient(180deg, #ffffff, #fbfcfe); }
+.ed-kind { letter-spacing: -0.01em; }
+
+/* Status / loading / error states: confident typography, gentle entrance. */
+.ed-status, .ed-loading, .ed-error { font-size: 15px; font-weight: 500; animation: ent-fade-in .22s ease; }
+@keyframes ent-fade-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+/* Toolbar buttons get tactile, responsive hover feedback (the "dopamine" beat). */
+.ed-rt-toolbar button, .ed-md-toolbar button, .ed-sheet-toolbar button, .ed-slide-tools button,
+.studio-action-select, .studio-props button {
+  transition: transform .12s ease, background .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.ed-rt-toolbar button:hover, .ed-md-toolbar button:hover, .ed-sheet-toolbar button:hover, .ed-slide-tools button:hover {
+  transform: translateY(-1px);
+}
+.ed-rt-toolbar button:active, .ed-md-toolbar button:active, .ed-sheet-toolbar button:active, .ed-slide-tools button:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* Primary CTAs get a soft glow on hover for a premium, clickable feel. */
+.ws-empty .tkx-button:hover, .ai-dock-foot .tkx-button:hover { box-shadow: 0 8px 22px rgba(46, 91, 255, 0.28); }
+
+/* Consistent, smooth motion for any card/tile across screens. */
+.ws-template-card, .v2-modal__inner, .ws-icon-btn { will-change: transform; }
+
+/* Section dividers in dense panels feel intentional, not bare. */
+.studio-props, .imgstudio-panel { scroll-behavior: smooth; }
+
+/* ── Design Studio: a premium, designer-grade canvas & panels ────────────── */
+.studio-stage, .imgstudio-stage {
+  background-color: #eef2f7;
+  background-image: radial-gradient(circle, #d3dbe6 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+.studio-rail, .studio-props, .imgstudio-panel { box-shadow: var(--ent-shadow-sm); }
+.studio-rail button, .studio-align button, .imgstudio-presets button, .resume-styles button {
+  transition: transform .12s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease;
+}
+.studio-rail button:hover, .studio-align button:hover, .imgstudio-presets button:hover, .resume-styles button:hover { transform: translateY(-1px); }
+.studio-swatch { transition: transform .12s ease; }
+.studio-swatch:hover { transform: scale(1.12); }
+
+/* Focus glow on every studio/modal input — clear, calm, enterprise feedback. */
+.studio-prop-grid input:focus, .studio-prop-grid select:focus, .studio-inline input:focus,
+.studio-text-input:focus, .studio-action-select:focus,
+.ai-field input:focus, .ai-prompt:focus, .qr-controls textarea:focus,
+.resume-grid input:focus, .resume-body input:focus, .resume-body textarea:focus,
+.brand-edit input:focus {
+  outline: none; border-color: #2e5bff; box-shadow: 0 0 0 3px rgba(46, 91, 255, 0.16);
+}
+
+/* ── Modals: soft backdrop blur + a confident entrance ───────────────────── */
+.v2-modal { backdrop-filter: blur(3px); animation: ent-overlay .14s ease; }
+.v2-modal__inner { animation: ent-modal-rise .18s cubic-bezier(.2, .8, .2, 1); }
+@keyframes ent-overlay { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ent-modal-rise { from { transform: translateY(10px) scale(.985); opacity: .5; } to { transform: none; opacity: 1; } }
+.brand-item { transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease; }
+.brand-item:hover { border-color: #c7d2fe; box-shadow: var(--ent-shadow-sm); }
+.resume-entry { box-shadow: var(--ent-shadow-sm); }
+.ai-result img { transition: transform .14s ease, box-shadow .14s ease; }
+.ai-result img:hover { transform: translateY(-2px); box-shadow: var(--ent-shadow-md); }
+
+/* ── PDF editor: consistent enterprise chrome (light, paper-context viewer) ── */
+.v2-bar { box-shadow: var(--ent-shadow-sm); position: relative; z-index: 20; }
+.v2-main { background: #eef2f7; background-image: radial-gradient(circle, #dbe2ec 1px, transparent 1px); background-size: 18px 18px; }
+.v2-bar__nav button, .v2-bar__zoom button, .v2-bar__save { transition: transform .12s ease, background .12s ease, box-shadow .12s ease, border-color .12s ease; }
+.v2-bar__nav button:hover, .v2-bar__zoom button:hover { transform: translateY(-1px); }
+.v2-bar__save:hover:not(:disabled) { box-shadow: 0 8px 22px rgba(46, 91, 255, 0.28); }
+.v2-thumb { transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease; }
+.v2-thumb:hover { transform: translateY(-2px); box-shadow: var(--ent-shadow-md); }
+.v2-smart { box-shadow: var(--ent-shadow-lg); }

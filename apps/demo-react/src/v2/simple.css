@@ -1,0 +1,50 @@
+/* Simple / Senior mode — larger, calmer, higher-contrast. Scoped entirely to
+   :root[data-simple="1"] so it's off by default and never affects normal use. */
+:root[data-simple="1"] {
+  font-size: 18px;
+}
+:root[data-simple="1"] body { line-height: 1.7; }
+
+/* Bigger, easier controls. */
+:root[data-simple="1"] .tkx-button,
+:root[data-simple="1"] button,
+:root[data-simple="1"] .ws-occ-chip,
+:root[data-simple="1"] .inv-cat,
+:root[data-simple="1"] .inv-sub {
+  min-height: 46px;
+  font-size: 1.02rem;
+}
+:root[data-simple="1"] .ws-quick-tile { min-height: 132px; }
+:root[data-simple="1"] .ws-quick-label { font-size: 1.15rem; }
+:root[data-simple="1"] .ws-quick-sub { font-size: 0.95rem; }
+:root[data-simple="1"] .ws-template-name { font-size: 1.05rem; }
+:root[data-simple="1"] .inv-card-name { font-size: 1rem; }
+
+/* More breathing room + clearer cards. */
+:root[data-simple="1"] .ws-quick-grid { gap: 16px; }
+:root[data-simple="1"] .inv-grid { gap: 18px; }
+:root[data-simple="1"] .ws-template-card,
+:root[data-simple="1"] .inv-card { border-width: 2px; }
+
+/* Stronger focus + link contrast for readability. */
+:root[data-simple="1"] a { text-decoration: underline; }
+:root[data-simple="1"] *:focus-visible { outline: 3px solid #2e5bff; outline-offset: 2px; }
+
+/* Larger inputs so typing is comfortable. */
+:root[data-simple="1"] input,
+:root[data-simple="1"] textarea,
+:root[data-simple="1"] .rem-date,
+:root[data-simple="1"] .qcard-field textarea { font-size: 1.05rem; padding: 12px 14px; }
+
+/* In Easy view the enlarged occasion/sub-type chips wrapped across the whole
+   screen and hid the template grid entirely ("nothing is visible"). Collapse
+   each chip bar to one swipeable row so the cards stay in view. */
+:root[data-simple="1"] .inv-cats,
+:root[data-simple="1"] .inv-subs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+:root[data-simple="1"] .inv-cats::-webkit-scrollbar,
+:root[data-simple="1"] .inv-subs::-webkit-scrollbar { display: none; }
+:root[data-simple="1"] .inv-cat,
+:root[data-simple="1"] .inv-sub { flex: 0 0 auto; white-space: nowrap; }
+
+/* The mode toggle button reads its state. */
+.ws-simple-btn[data-on="1"] { color: #2e5bff; background: #eef2ff; }

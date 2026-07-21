@@ -1,0 +1,51 @@
+{
+  "name": "@pdfcraft/parser",
+  "version": "1.0.0-rc.0",
+  "description": "From-scratch PDF parser and incremental-update writer for AcroForm reading + field-value writes. Zero third-party PDF runtime dependencies. Supports encrypted PDFs (RC4 + AES-128 + AES-256), hybrid xref, LZW/Flate/ASCII85/ASCIIHex/RunLength filters, and the PDF Standard Security Handler.",
+  "keywords": [
+    "pdf",
+    "pdf-parser",
+    "pdf-writer",
+    "acroform",
+    "pdf-form",
+    "encrypted-pdf",
+    "pdf-encryption",
+    "rc4",
+    "aes",
+    "flatedecode",
+    "lzwdecode",
+    "xref",
+    "incremental-update"
+  ],
+  "homepage": "https://github.com/novaai0401-ui/editable-pdf#readme",
+  "bugs": "https://github.com/novaai0401-ui/editable-pdf/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/novaai0401-ui/editable-pdf.git",
+    "directory": "packages/pdf-core-parser"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "sideEffects": false,
+  "files": ["dist/index.js", "dist/index.d.ts", "LICENSE", "README.md"],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist",
+    "test": "vitest run",
+    "prepublishOnly": "pnpm build"
+  },
+  "devDependencies": {
+    "pdf-lib": "^1.17.1",
+    "tsup": "^8.4.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}

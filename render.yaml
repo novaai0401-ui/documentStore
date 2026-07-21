@@ -1,0 +1,73 @@
+# Render deployment as a Web Service (not a Static Site) so the same origin can
+# serve the app AND host the collaboration relay — which is what makes
+# cross-device sharing work with no extra configuration. The relay only forwards
+# already-encrypted frames; it never sees document contents.
+#
+# If you currently run this as a Render "Static Site", switch it to this Web
+# Service (or create a new one from this blueprint) and cross-device collab will
+# work on the existing domain.
+services:
+  - type: web
+    name: pdfcraft
+    runtime: node
+    plan: free
+    # Render already provides pnpm (from the "packageManager" field), so don't run
+    # `corepack enable` — it tries to rewrite /usr/bin/pnpm on a read-only FS.
+    buildCommand: pnpm install --frozen-lockfile && pnpm build:site
+    startCommand: node scripts/serve.mjs
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      # Optional override of the GA4 Measurement ID (a default is baked into the
+      # build). Set a value in the Render dashboard only to point analytics at a
+      # different GA4 property; Vite reads it at build time.
+      - key: VITE_GA_ID
+        sync: false
+      # Optional TURN server for video/audio calls. STUN (built in) is enough for
+      # most networks, but strict/symmetric NATs need a TURN relay to get a media
+      # path. Set these in the Render dashboard to enable it (read at build time).
+      # VITE_TURN_URL may be a comma-separated list, e.g.
+      #   turn:turn.example.com:3478,turns:turn.example.com:5349
+      - key: VITE_TURN_URL
+        sync: false
+      - key: VITE_TURN_USERNAME
+        sync: false
+      - key: VITE_TURN_CREDENTIAL
+        sync: false
+      # ── AI (Groq) — powers "Write with AI" script generation ──────────────
+      # Server-side ONLY: these keys are read by scripts/serve.mjs and never
+      # reach the browser. Set GROQ_API_KEY (get one at
+      # https://console.groq.com/keys). Add GROQ_API_KEY_2, _3, … as spare keys —
+      # the server automatically rotates to the next when one hits its quota
+      # (429). With no key set, the AI button simply stays hidden and everything
+      # else works unchanged. GROQ_MODEL is optional (default:
+      # llama-3.3-70b-versatile).
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_API_KEY_2
+        sync: false
+      - key: GROQ_MODEL
+        sync: false
+      # ── Web Push (festival notifications to closed tabs & iPhones) ────────
+      # Server-side ONLY (read by scripts/serve.mjs; the private key never
+      # reaches the browser). Generate ONCE with `npx web-push
+      # generate-vapid-keys` and keep the same pair across deploys — a new pair
+      # invalidates every existing subscription. With no keys set, push stays
+      # off and the on-device notification layer still works unchanged.
+      # See docs/PUSH-NOTIFICATIONS.md for the full setup guide.
+      - key: VAPID_PUBLIC_KEY
+        sync: false
+      - key: VAPID_PRIVATE_KEY
+        sync: false
+      - key: VAPID_SUBJECT
+        sync: false
+      # ── Google AdSense ────────────────────────────────────────────────────
+      # Set this to your approved publisher id (ca-pub-XXXXXXXXXXXXXXXX) to turn
+      # on ads. The build then injects the AdSense loader into every page and
+      # writes a real ads.txt. Leave unset (default) and the site shows no ads
+      # and an empty ads.txt — exactly as before. Read at BUILD time, so
+      # redeploy after changing it. In AdSense, enable "Auto ads" for the site.
+      - key: VITE_ADSENSE_CLIENT
+        sync: false
+

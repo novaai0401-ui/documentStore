@@ -1,0 +1,67 @@
+PROPRIETARY SOFTWARE LICENSE
+============================
+
+Copyright (c) 2026 pdfcraft authors. All Rights Reserved.
+
+NOTICE: This software and accompanying documentation (the "Software")
+are the proprietary and confidential property of the copyright holder.
+
+1.  GRANT OF LICENSE
+    No license, express or implied, is granted to any person or entity
+    to use, copy, modify, merge, publish, distribute, sublicense, sell,
+    or otherwise exploit the Software, except under a separate written
+    agreement signed by the copyright holder.
+
+2.  PROHIBITED ACTIVITIES
+    Without a separate written license from the copyright holder, you
+    may NOT:
+      (a) reproduce, copy, or duplicate the Software, in whole or in part;
+      (b) distribute, sublicense, lease, rent, lend, or transfer the
+          Software to any third party;
+      (c) modify, adapt, translate, reverse engineer, decompile,
+          disassemble, or create derivative works based on the Software;
+      (d) remove or alter any copyright, trademark, or other proprietary
+          notice contained in the Software;
+      (e) use the Software, or any component of it, to build a product
+          that competes with the Software;
+      (f) re-publish the Software, or any portion of it, to any
+          public package registry, source-control host, content
+          delivery network, or other distribution channel.
+
+3.  DESIGN AND TRADE DRESS
+    The user-interface design, layout, visual presentation, interaction
+    flows, and the overall look-and-feel of the Software are protected
+    trade dress of the copyright holder. Reproducing the visual design,
+    in whole or in substantial part, including but not limited to
+    cloning the toolbar, sidebars, form-overlay, annotation tools,
+    field-properties popover, or color/typography choices, is
+    prohibited.
+
+4.  EVALUATION USE
+    The copyright holder may grant time-limited evaluation access on
+    request. Evaluation use does not grant any production-deployment
+    or redistribution rights.
+
+5.  COMMERCIAL LICENSING
+    Commercial use, internal-tool deployment, embedding in customer-
+    facing products, and OEM redistribution all require a separate
+    commercial license. Contact the copyright holder to negotiate
+    terms.
+
+6.  NO WARRANTY
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+    NONINFRINGEMENT.
+
+7.  LIMITATION OF LIABILITY
+    IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM,
+    DAMAGES, OR OTHER LIABILITY ARISING FROM, OUT OF, OR IN CONNECTION
+    WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+8.  GOVERNING LAW
+    This License shall be governed by and construed in accordance with
+    the laws of the copyright holder's jurisdiction, without regard to
+    its conflict-of-law provisions.
+
+For licensing inquiries, contact the copyright holder.

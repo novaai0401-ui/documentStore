@@ -1,0 +1,120 @@
+/*
+ * Responsive layer. The app's chrome is desktop-first; these breakpoints adapt
+ * every major surface — shell header, editor toolbars, editing body, side docks,
+ * PDF toolbar, slide/sheet/text layouts, the document library, smart panel, and
+ * modals — down to tablets and phones. It's layered on top of the base styles
+ * (imported last) so it only overrides what each width needs.
+ */
+
+/* Install-as-app control (works alongside the tekivex-ui button it wraps). */
+.pwa-install { display: inline-flex; align-items: center; gap: 8px; position: relative; }
+.pwa-install-hint {
+  position: absolute; top: calc(100% + 6px); left: 0; z-index: 90;
+  background: #0f172a; color: #e2e8f0; font-size: 12px; line-height: 1.4;
+  padding: 8px 10px; border-radius: 8px; width: max-content; max-width: 240px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.25);
+}
+.pwa-install-hint strong { color: #fff; }
+
+/* ── Tablet ─────────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .ws-bar { gap: 10px; padding: 8px 12px; flex-wrap: wrap; }
+  .ed-bar { padding: 8px 12px; gap: 8px; }
+  .ed-rt-toolbar, .ed-md-toolbar, .ed-sheet-toolbar, .ed-slide-tools { padding: 6px 12px; }
+  .v2-main { padding: 12px; }
+  .ai-dock { flex-basis: 300px; }
+  .ed-slide-list { flex-basis: 160px; }
+}
+
+/* ── Phone ──────────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  /* Shell header wraps; brand stays, actions flow underneath. */
+  .ws-bar { gap: 8px; padding: 8px 10px; }
+  .ws-brand { font-size: 16px; }
+  .ws-docs { margin-left: 0; }
+  .pwa-install { margin-left: auto; }
+
+  /* Editor top bar: title on its own line, actions wrap full width. Actions
+     must WRAP, never scroll sideways — new users don't know to swipe, so the
+     Save/Download buttons have to stay on screen. */
+  .ed-bar { padding: 8px 10px; gap: 6px; }
+  .ed-kind { width: 100%; }
+  .ed-actions { margin-left: 0; width: 100%; gap: 6px; flex-wrap: wrap; overflow-x: visible; }
+
+  /* Formatting toolbars become a single horizontally-scrollable row so the
+     buttons never crush; momentum scroll on touch. */
+  .ed-rt-toolbar, .ed-md-toolbar, .ed-sheet-toolbar, .ed-slide-tools {
+    flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    padding: 6px 10px; gap: 4px;
+  }
+  .ed-rt-toolbar > *, .ed-md-toolbar > *, .ed-sheet-toolbar > *, .ed-slide-tools > * { flex: 0 0 auto; }
+
+  /* Editing body + side dock stack vertically; the surface stays on top and the
+     dock (AI / preview) docks below with a capped height. */
+  .ed-body-row { flex-direction: column; }
+  .ai-dock {
+    flex: 0 0 auto; width: 100%; max-height: 46vh;
+    border-left: none; border-top: 1px solid #e2e8f0;
+  }
+  .ed-rt-col, .ed-sheet-col { min-height: 45vh; }
+
+  /* Text editor: stack source over preview instead of side-by-side. */
+  .ed-split { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+  .ed-preview { border-left: none; border-top: 1px solid #e2e8f0; padding: 16px; }
+  .ed-textarea { padding: 14px; }
+
+  /* Slides: thumbnails become a horizontal strip above the stage. */
+  .ed-slides { flex-direction: column; }
+  .ed-slide-list {
+    flex: 0 0 auto; flex-direction: row; overflow-x: auto; overflow-y: hidden;
+    border-right: none; border-bottom: 1px solid #e2e8f0; padding: 8px;
+  }
+  .ed-slide-list > .ed-slide-thumb { flex: 0 0 auto; min-width: 132px; }
+  .ed-slide-stage { padding: 14px; }
+  .ed-slide-canvas { padding: 22px 24px; gap: 12px; }
+
+  /* PDF toolbar: drop the rigid 3-column grid for a centered wrap. */
+  .v2-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 8px 10px; }
+  .v2-bar__group { flex-wrap: wrap; justify-content: center; gap: 6px; }
+  .v2-bar__group--left, .v2-bar__group--center, .v2-bar__group--right { justify-self: center; }
+  .v2-bar__filename { max-width: 42vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .v2-main { padding: 8px; }
+
+  /* Smart panel fills the screen as an overlay. */
+  .v2-smart { width: 100%; max-width: 100%; }
+  .v2-smart--max { width: 100%; max-width: 100%; }
+
+  /* Library / templates: tighter hero (the grid itself is TkxRow/TkxCol). */
+  .ws-empty { padding: 24px 14px; }
+  .ws-templates-bar { justify-content: flex-start; }
+
+  /* Collaboration bar wraps rather than overflowing. */
+  .ed-collab-bar { flex-wrap: wrap; height: auto; row-gap: 4px; }
+  .ed-collab-spacer { flex-basis: 100%; height: 0; }
+
+  /* Embedded charts shrink to fit. */
+  .ed-embed-chart-canvas { height: 260px; }
+
+  /* Modals stay within the viewport. */
+  .v2-modal { padding: 12px; }
+  .v2-modal__inner { width: 94vw; max-width: 94vw; max-height: 86vh; overflow: auto; }
+}
+
+/* Very small phones: trim the densest controls a touch more. */
+@media (max-width: 380px) {
+  .ed-rt-toolbar button, .ed-md-toolbar button, .ed-sheet-toolbar button { padding: 4px 7px; min-width: 28px; }
+  .ws-brand { font-size: 15px; }
+}
+
+/* Phone: stop the PDF top bar clipping the brand/filename and the find box.
+   Each group takes its own full-width row and the search field goes fluid. */
+@media (max-width: 600px) {
+  .v2-bar { justify-content: flex-start; }
+  .v2-bar__group--left,
+  .v2-bar__group--center,
+  .v2-bar__group--right { width: 100%; justify-content: flex-start; justify-self: stretch; }
+  .v2-bar__brand { flex: 0 0 auto; }
+  .v2-bar__filename { max-width: 60vw; }
+  .v2-search { width: 100%; box-sizing: border-box; }
+  .v2-search__input { width: auto; flex: 1 1 auto; min-width: 0; }
+}

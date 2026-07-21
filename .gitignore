@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.turbo/
+*.tsbuildinfo
+.DS_Store
+*.local
+coverage/
+
+# Claude Code local config
+.claude/
+/dist
+push-subs.json

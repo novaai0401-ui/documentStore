@@ -1,0 +1,45 @@
+{
+  "name": "@pdfcraft/ui-adapter-tekivex",
+  "version": "1.0.0-rc.0",
+  "description": "UIAdapter using tekivex-ui. Default styled adapter shipped with the editable-pdf demo.",
+  "keywords": ["pdf", "pdf-form", "ui-adapter", "tekivex", "tekivex-ui"],
+  "homepage": "https://github.com/novaai0401-ui/editable-pdf#readme",
+  "bugs": "https://github.com/novaai0401-ui/editable-pdf/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/novaai0401-ui/editable-pdf.git",
+    "directory": "packages/pdf-ui-adapter-tekivex"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "sideEffects": false,
+  "files": ["dist/index.js", "dist/index.d.ts", "LICENSE", "README.md"],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist",
+    "test": "echo 'no tests'",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "@pdfcraft/ui-react": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "tekivex-ui": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "react": "^19.0.0",
+    "tekivex-ui": "^3.22.1",
+    "tsup": "^8.4.0",
+    "typescript": "^5.7.0"
+  }
+}

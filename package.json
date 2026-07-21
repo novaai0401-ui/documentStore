@@ -1,0 +1,36 @@
+{
+  "name": "pdfcraft-monorepo",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "build:site": "node scripts/build-site.mjs",
+    "start": "node scripts/serve.mjs",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean",
+    "dev": "turbo run dev",
+    "e2e:smoke": "node scripts/e2e-smoke.mjs"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "@typescript-eslint/eslint-plugin": "^8.57.0",
+    "@typescript-eslint/parser": "^8.57.0",
+    "eslint": "^10.0.3",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "gifenc": "^1.0.3",
+    "h264-mp4-encoder": "^1.0.12",
+    "tsup": "^8.4.0",
+    "turbo": "^2.4.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "pnpm": {
+    "patchedDependencies": {
+      "tekivex-ui@3.22.1": "patches/tekivex-ui@3.22.1.patch"
+    }
+  },
+  "dependencies": {
+    "web-push": "^3.6.7"
+  }
+}

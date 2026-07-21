@@ -1,0 +1,35 @@
+{
+  "//": "Bubblewrap TWA config — wraps the deployed PWA as an Android app for Google Play. Edit host/startUrl to your production domain, then `bubblewrap init --manifest ./twa-manifest.json && bubblewrap build`. See docs/play-store-deploy.md.",
+  "packageId": "com.tekivex.pyntra",
+  "host": "pyntra.tekivex.com",
+  "name": "Pyntra",
+  "launcherName": "Pyntra",
+  "display": "standalone",
+  "orientation": "any",
+  "themeColor": "#2e5bff",
+  "themeColorDark": "#0f172a",
+  "navigationColor": "#0f172a",
+  "backgroundColor": "#0f172a",
+  "enableNotifications": false,
+  "startUrl": "/app",
+  "iconUrl": "https://pyntra.tekivex.com/icon-512.png",
+  "maskableIconUrl": "https://pyntra.tekivex.com/icon-512-maskable.png",
+  "webManifestUrl": "https://pyntra.tekivex.com/manifest.webmanifest",
+  "fallbackType": "customtabs",
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [
+    { "name": "Open a document", "shortName": "Open", "url": "/app", "chosenIconUrl": "https://pyntra.tekivex.com/icon-192.png" }
+  ],
+  "features": {},
+  "alphaDependencies": { "enabled": false },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://pyntra.tekivex.com/",
+  "minSdkVersion": 23,
+  "signingKey": {
+    "path": "./android.keystore",
+    "alias": "android"
+  }
+}
