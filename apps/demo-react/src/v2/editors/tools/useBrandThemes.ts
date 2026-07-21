@@ -6,7 +6,7 @@
  */
 import { useCallback, useEffect, useState } from 'react';
 import { THEMES, themeById as builtinThemeById, type DocTheme } from './themes.js';
-import { getActiveBrandKit } from '../../studio/brandStore.js';
+import { getActiveBrandKit } from './brandStore.js';
 import { brandKitToTheme } from './brandTheme.js';
 
 export function useBrandThemes(): { themes: DocTheme[]; resolve: (id: string) => DocTheme; reload: () => void } {

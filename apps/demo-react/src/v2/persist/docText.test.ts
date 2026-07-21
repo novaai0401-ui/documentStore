@@ -20,13 +20,6 @@ describe('docToText', () => {
     expect(out.map((p) => p.page)).toEqual([1, 2]);
     expect(out[1]!.text).toContain('T2');
   });
-  it('reads design text elements', () => {
-    const design = { w: 10, h: 10, background: '#fff', elements: [
-      { id: 't', type: 'text' as const, x: 0, y: 0, w: 1, h: 1, text: 'Poster headline', size: 12, color: '#000', font: 'Inter', weight: 400, align: 'left' as const },
-      { id: 'r', type: 'rect' as const, x: 0, y: 0, w: 1, h: 1, fill: '#eee' },
-    ] };
-    expect(docToText(rec({ design }, 'design'))[0]!.text).toBe('Poster headline');
-  });
   it('returns nothing for a pdf (bytes only) or empty doc', () => {
     expect(docToText(rec({ bytes: new Uint8Array([1, 2]) }, 'pdf'))).toEqual([]);
     expect(docToText(rec({}))).toEqual([]);

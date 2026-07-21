@@ -6,7 +6,7 @@
  * and a near-white (or white) becomes the page background.
  */
 import type { DocTheme } from './themes.js';
-import type { BrandKit } from '../../studio/brandStore.js';
+import type { BrandKit } from './brandStore.js';
 
 /** Perceived luminance 0..1 of a #rrggbb colour. */
 function luminance(hex: string): number {

@@ -6,7 +6,7 @@
  */
 import { useState } from 'react';
 import { TkxButton } from 'tekivex-ui';
-import { BrandManager } from '../../studio/BrandManager.js';
+import { BrandManager } from './BrandManager.js';
 
 export function BrandButton({ onChange }: { onChange: () => void }) {
   const [open, setOpen] = useState(false);

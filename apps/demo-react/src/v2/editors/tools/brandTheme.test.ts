@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { brandKitToTheme } from './brandTheme.js';
-import { emptyBrandKit } from '../../studio/brandStore.js';
+import { emptyBrandKit } from './brandStore.js';
 
 describe('brandKitToTheme', () => {
   it('maps the primary colour to the accent and a dark colour to headings/text', () => {

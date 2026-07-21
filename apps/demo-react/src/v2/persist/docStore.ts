@@ -7,8 +7,11 @@
  */
 import { openKv, type Kv } from './kv.js';
 import type { Slide } from '../smart/convert.js';
-import type { Design } from '../studio/model.js';
-import type { AnchoredComment } from '../studio/anchoredComments.js';
+// Documents-only build: legacy design records may still exist in a user's local
+// library, so these fields are kept for backward-compatible reads, but the
+// creative studio (and its types) has been removed. They are typed opaquely.
+type Design = unknown;
+type AnchoredComment = unknown;
 
 export type StoredKind = 'text' | 'word' | 'sheet' | 'slides' | 'pdf' | 'design';
 

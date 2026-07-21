@@ -33,13 +33,6 @@ export function docToText(rec: DocRecord): DocPage[] {
   if (typeof c.html === 'string' && c.html.trim()) return [{ page: 1, text: htmlToText(c.html) }];
   if (c.rows?.length) return [{ page: 1, text: c.rows.map((r) => r.join(' ')).join('\n') }];
   if (c.slides?.length) return c.slides.map((s, i) => ({ page: i + 1, text: [s.title, ...s.body].filter(Boolean).join('\n') }));
-  if (c.design?.elements?.length) {
-    const text = c.design.elements
-      .filter((e): e is typeof e & { text: string } => e.type === 'text' && typeof (e as { text?: string }).text === 'string')
-      .map((e) => e.text)
-      .join('\n');
-    return text.trim() ? [{ page: 1, text }] : [];
-  }
   return []; // pdf bytes / empty
 }
 

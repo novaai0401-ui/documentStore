@@ -5,7 +5,7 @@
  * the logo is a data URL, so nothing leaves the device. Pure CRUD here; the UI and
  * the "apply" wiring live in the editors.
  */
-import { openKv, type Kv } from '../persist/kv.js';
+import { openKv, type Kv } from '../../persist/kv.js';
 
 export interface BrandKit {
   id: string;
