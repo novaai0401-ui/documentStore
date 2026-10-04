@@ -1,0 +1,288 @@
+DEVIN JIRA PROMPT PACK
+Version 1.0 | 5 October 2026
+
+Open Devin_Jira_Member_Flow_Guide.docx for exact usage steps.
+Replace bracketed fields before sending. Use P1 only if planning is needed.
+Use P2 for a story OR P3 for a bug. P4-P10 are follow-ups when needed.
+No automatic installation, hook execution or account changes are performed.
+
+========================================================================
+P0 Task brief to fill once
+========================================================================
+Jira key and link: [KEY-123 and URL]
+Task type: [story / bug]
+Goal: [one user-visible outcome]
+React repo and base branch: [owner/repo, branch]
+Spring repo and base branch: [owner/repo, branch]
+Related branch/PR/commit to continue, if any: [exact refs or none]
+Acceptance criteria:
+AC1: [successful user action and expected result]
+AC2: [validation or error case and expected result]
+AC3: [compatibility, accessibility or other requirement]
+Scope: [screen/route/service, if known]
+Out of scope: [unrelated behavior]
+API contract source and revision: [path/link + version, or UNKNOWN]
+Existing examples/design: [relevant file paths or attached design]
+Test/start instructions: [repo documentation paths, or UNKNOWN]
+Required services: [existing development environment, or UNKNOWN]
+Delivery: [reviewable changes first / draft PRs]
+If something is UNKNOWN, inspect existing files before asking me.
+Do not invent business behavior. Ask only questions that block correctness.
+
+========================================================================
+P1 Ask Devin to scope a story
+========================================================================
+Use the task brief below to plan one Jira story across the selected
+React and Spring Boot repositories. Research only; do not start an
+Agent session or claim to have run application tests.
+Locate the existing UI, API client, route/controller, DTO/service
+and relevant tests. Compare both sides against the API contract.
+Return: relevant paths with evidence, API mismatches, blocking
+questions, a short ordered plan and the existing verification
+commands. Say which branch/revision the evidence represents;
+if the index cannot establish it, mark that UNVERIFIED.
+Limit the plan to about 500 words. Avoid broad architecture review.
+Prepare a concise handoff prompt once the requirements are clear.
+
+[Paste the completed P0 task brief here.]
+
+========================================================================
+P2 Agent session to implement a story
+========================================================================
+Complete this one Jira story in ONE Devin session across both
+repositories. Do not launch managed/child sessions or competing
+implementations. Coordinate both sides against one agreed contract.
+
+1. Verify access to both repos, actual checkout paths, intended
+   base branches/HEADs and any existing work. Read applicable repo
+   instructions and existing setup/test docs. Treat the Ask plan
+   as guidance; check it against the current files before editing.
+   If access, required services or a blocking requirement is missing,
+   report the exact blocker and stop that dependent work.
+2. Give a brief plan tied to AC1/AC2/AC3, then implement without
+   waiting for another confirmation if the brief is unambiguous.
+   Ask before changing agreed business behavior or expanding scope.
+3. Use a feature branch in each changed repo. Reuse existing React
+   components/hooks/API clients and Spring DTO/validation/error
+   patterns. Keep edits small. Preserve unrelated work. Do not add
+   libraries, perform broad refactors or change deployment settings
+   unless the task requires it and the scope has been agreed.
+4. Keep endpoint, request/response types, nullability, validation,
+   error codes and pagination consistent. If the contract changes,
+   update its authoritative source and explain compatibility/order.
+5. Add or update meaningful tests. First run focused checks, then
+   the required repo checks from the documented working directories.
+   Use non-watch commands. Inspect failures before retrying. After
+   two attempts with the same cause and no new evidence, stop and
+   report the cause, attempted fix and next action. Do not relax tests.
+6. Start the relevant development services and verify the actual
+   React-to-Spring action and its error case in the browser when
+   available. Inspect the API response. Capture concise evidence.
+   Mark unavailable checks NOT RUN; never substitute a claim of PASS.
+7. Recheck the latest relevant diffs and contract in both repos.
+   Return an AC-by-AC PASS/FAIL/BLOCKED/NOT RUN table, commands and
+   results, branches/commits, files changed and remaining work.
+   Follow the Delivery field. Do not merge, deploy or change Jira
+   status. Draft a short Jira update for me to review.
+
+Efficiency: follow the relevant code paths; skip generated files
+and dependency trees. Do not rerun unchanged passing checks.
+Do independent reads/checks concurrently only when supported and
+safe within this session; concurrent work is not an ACU guarantee.
+Do not promise an ACU cap from this prompt or invent usage figures.
+
+[Paste the completed P0 brief and accepted plan here.]
+
+========================================================================
+P3 Agent session to fix a bug
+========================================================================
+Fix one reproducible bug in the selected React/Spring repositories
+using one session. Do not start additional sessions.
+
+Jira key/link: [key and URL]
+React repo/base: [repo and branch]
+Spring repo/base: [repo and branch]
+Steps to reproduce: [numbered user actions]
+Actual result: [observed symptom and relevant error]
+Expected result: [precise behavior]
+Environment: [dev/test environment, affected version]
+Evidence: [small log excerpt, request/response, screenshot if useful]
+Recent relevant change: [commit/PR, or UNKNOWN]
+Out of scope: [unrelated changes]
+Delivery: reviewable changes first; no push or PR until requested.
+
+Verify the checkouts and repo instructions. Reproduce the failure
+and follow the request from React to Spring. Identify the root cause
+with file evidence. If reproduction is blocked, report it instead
+of making speculative broad changes. Implement the smallest fix,
+add a regression test for the failure, and run required checks.
+Verify the corrected browser/API behavior and an adjacent error
+case. Keep existing contract behavior unless the ticket changes it.
+After two failed attempts with the same cause and no new evidence,
+stop and report the blocker. Return cause, fix, changed files,
+test commands/results, unrun work and a proposed Jira update.
+
+========================================================================
+P4 Redirect a session that is wasting work
+========================================================================
+Stop the current line of investigation after the active safe step.
+Keep all existing work. Do not start a new session or wider refactor.
+The required outcome is: [exact acceptance criterion].
+The useful evidence is: [file / error / observed behavior].
+Your current assumption to correct is: [specific correction].
+Summarize the blocker and propose the smallest next action.
+Do not repeat the same failed command without a changed input or
+new diagnostic reason. Wait for my answer if the next step needs
+missing access, a business decision or an expanded scope.
+
+========================================================================
+P5 Verify the latest changes
+========================================================================
+Verify the current changes for [Jira key] against the agreed
+acceptance criteria in BOTH repositories. Reconfirm branch, HEAD
+and relevant working-tree differences before using earlier results.
+Compare UI request/types and backend DTO/validation/errors against
+the same contract revision. Run missing or invalidated checks;
+reuse still-current passing evidence with its commit/snapshot.
+Verify the actual successful user action and required failure case.
+Return a table: criterion | result | exact evidence | remaining work.
+Use PASS, FAIL, BLOCKED or NOT RUN. Include working directories,
+commands, exit results and browser/API evidence where available.
+Distinguish existing environment failures from this change.
+Do not claim completion, push or open PRs while required checks are
+unresolved. Give me one next action for any blocker.
+
+========================================================================
+P6 Publish reviewed changes as draft PRs
+========================================================================
+For [Jira key], publish only the reviewed task changes on the
+agreed feature branches and open a draft PR in each changed repo
+against [React base] and [Spring base]. Follow repo PR templates.
+Cross-link the PRs and Jira ticket. Include the acceptance results,
+commands, integration evidence and any compatibility/deployment
+order. Do not merge, deploy, or change Jira status.
+If permissions or required checks block publication, preserve the
+work and report the exact blocker instead of trying another identity.
+Return both PR links and a Jira update for me to paste.
+
+========================================================================
+P7 Handle PR feedback in the same session
+========================================================================
+Continue [Jira key] on the existing branches and PRs [links].
+Address only this review feedback: [paste specific comments].
+Verify current remote/local refs and preserve other edits. Explain
+any disputed comment with evidence. Apply agreed fixes, rerun only
+affected checks plus required gates invalidated by the changes,
+and update the existing PRs. Do not create duplicate PRs, merge,
+deploy or expand the feature. Return changes and fresh test evidence.
+
+========================================================================
+P8 Diagnose a saved hook without changing it
+========================================================================
+Help diagnose a saved Devin hook that never ran. Do not alter it.
+Surface: [Ask web / Agent cloud / CLI / Desktop]
+Saved location and scope: [Customize Hooks Personal, repo file, etc.]
+Hook event: [exact event]
+Matcher: [exact value]
+Command and configuration: [non-sensitive content]
+Saved at: [time]
+Session started at: [time and session URL/id]
+Expected observable result: [log/marker/context change]
+Observed result/error: [what happened]
+
+Check surface support, new-session loading, scope, configuration
+format, actual event/tool name, command working directory/runtime
+and evidence of execution. Distinguish 'not loaded', 'not triggered'
+and 'triggered but failed'. Do not attribute it to my Member role
+without an actual permission error. Do not manually run the hook
+and then claim that it fired automatically. If runtime evidence is
+unavailable, say UNVERIFIED and give the smallest next diagnostic.
+
+========================================================================
+P9 Test a personal hook in a fresh Agent session
+========================================================================
+This is a short hook smoke test, not a coding task. In this fresh
+Agent session, run the harmless shell command pwd once. Then read
+/tmp/devin-hook-probe.log if it exists and report whether it contains
+DEVIN_HOOK_PROBE_20261005, including the tool/event evidence if
+available. Check that its modification time is from this fresh
+session; an old marker is not proof. Do not create or write that file;
+only the configured hook should write it. Do not modify source
+files, create PRs or start other sessions. If missing, report it
+as missing and stop. Do not repair the hook during this test.
+
+========================================================================
+P10 Handoff between Copilot and Devin
+========================================================================
+Continue one task; do not restart completed work.
+Jira key/link: [key and URL]
+Previous tool/session: [Copilot or Devin plus link if accessible]
+React repo + branch + pushed commit: [values]
+Spring repo + branch + pushed commit: [values]
+PR links: [links or none]
+Working tree in previous tool: [clean / uncommitted work not shared]
+Agreed API contract + revision: [source and revision]
+Completed acceptance criteria: [IDs and evidence]
+Latest test evidence + commit: [commands/results]
+Remaining work: [specific criterion or review comment]
+Known blockers: [facts]
+
+Verify you can access these exact refs before editing. A local
+uncommitted change in the other tool is not available automatically.
+Confirm the intended continuation branch; do not make duplicate
+PRs or rewrite finished work. Recheck evidence invalidated by new
+changes. The previous tool is paused and will not edit this task.
+
+========================================================================
+P11 Optional reusable playbook body
+========================================================================
+Purpose: complete one scoped React/Spring Jira story or bug in one
+Devin session and return evidence for review.
+Required input: ticket text, both repositories and base branches,
+acceptance criteria, scope, known contract source and delivery mode.
+1. Validate those inputs and current checkouts; read repo instructions.
+2. Establish the shared API behavior, relevant files and existing tests.
+3. Ask only blocking questions. Otherwise implement the smallest change
+   using existing patterns, with a feature branch per changed repo.
+4. Keep both sides of the contract consistent. Preserve unrelated work.
+5. Run focused tests then required project gates and actual integration.
+6. Stop repeated failures after two attempts with no new evidence.
+   Report missing access/services instead of redesigning around them.
+7. Deliver one acceptance table, actual test evidence, changed files,
+   remaining work and draft PRs only when that delivery was requested.
+8. Do not merge, deploy or change Jira status. Do not start child sessions.
+Use the session prompt for task details. Mark unverified facts and unrun
+checks explicitly. This procedure is not an enforced ACU spending cap.
+
+========================================================================
+P12 Optional personal rule text
+========================================================================
+For my Jira implementation tasks, keep one focused session and one
+agreed API contract across React and Spring Boot. Read each repo's
+instructions, preserve unrelated work and use existing code patterns.
+Do not start additional sessions unless I explicitly request them.
+After two failed attempts with the same cause and no new evidence,
+report the blocker. Return acceptance criteria with actual test
+evidence; mark unrun checks NOT RUN. Do not merge or deploy unless
+requested. Keep task-specific details in the current prompt.
+
+========================================================================
+P13 Worked example story brief
+========================================================================
+ILLUSTRATIVE EXAMPLE ONLY. Replace repos/routes with your real task.
+Jira key: APP-123
+Goal: add an optional status filter to the customer list.
+React repo/base: example/customer-web, develop
+Spring repo/base: example/customer-api, develop
+AC1: choosing Active sends status=ACTIVE and displays active customers.
+AC2: choosing All omits status and preserves today's unfiltered list.
+AC3: an unsupported status receives the existing standard 400 error.
+API: GET /api/customers; add optional status ACTIVE or INACTIVE.
+Keep the existing response envelope and pagination unchanged.
+Reuse the current filter UI, API client and backend error mapping.
+No new database columns, dependencies or unrelated list redesign.
+Check reset-to-first-page behavior when the filter changes.
+Verify the filtered response AND rendered rows in the browser.
+Delivery: reviewable changes first; no push/PR yet.
+If these example requirements conflict with the actual app, stop and
+ask rather than silently treating this sample as a company standard.
